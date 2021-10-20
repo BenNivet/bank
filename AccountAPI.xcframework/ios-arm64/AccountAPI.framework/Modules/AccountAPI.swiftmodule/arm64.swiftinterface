@@ -1,0 +1,97 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AccountAPI
+@_exported import AccountAPI
+import Foundation
+import Swift
+import _Concurrency
+public class AccountServices : AccountAPI.AccountServicesProtocol {
+  public func getAccounts(completion: @escaping ([AccountAPI.Account]) -> Swift.Void)
+  public func getAccountOperations(from accountId: Foundation.UUID, completion: @escaping ([AccountAPI.AccountOperation]) -> Swift.Void)
+  public func getChangeRate(base: AccountAPI.Currency, to: AccountAPI.Currency) -> Swift.Double
+  public init()
+  @objc deinit
+}
+public protocol AccountServicesProtocol {
+  func getAccounts(completion: @escaping ([AccountAPI.Account]) -> Swift.Void)
+  func getAccountOperations(from accountId: Foundation.UUID, completion: @escaping ([AccountAPI.AccountOperation]) -> Swift.Void)
+  func getChangeRate(base: AccountAPI.Currency, to: AccountAPI.Currency) -> Swift.Double
+}
+public enum Currency : Swift.String, Swift.CaseIterable {
+  case EUR
+  case USD
+  case GBP
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [AccountAPI.Currency]
+  public typealias RawValue = Swift.String
+  public static var allCases: [AccountAPI.Currency] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum AccountType : Swift.String, Swift.CaseIterable {
+  case checkingAccount
+  case creditAccount
+  case savingsAccount
+  public var label: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [AccountAPI.AccountType]
+  public typealias RawValue = Swift.String
+  public static var allCases: [AccountAPI.AccountType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum OperationType : Swift.String, Swift.CaseIterable {
+  case creditCard
+  case income
+  case transfer
+  case withdrawal
+  public var label: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [AccountAPI.OperationType]
+  public typealias RawValue = Swift.String
+  public static var allCases: [AccountAPI.OperationType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct AccountOperation {
+  public let id: Foundation.UUID
+  public let accountID: Foundation.UUID
+  public let type: AccountAPI.OperationType
+  public let amount: Swift.Double
+  public let currency: AccountAPI.Currency
+  public let date: Swift.String
+}
+public struct Account {
+  public let id: Foundation.UUID
+  public let label: Swift.String
+  public let number: Swift.String
+  public let type: AccountAPI.AccountType
+  public let currency: AccountAPI.Currency
+  public let amount: Swift.Double
+  public let subscriptionDate: Swift.String
+  public let owner: Swift.String
+  public let iban: Swift.String
+  public let legalInformations: Swift.String
+}
+extension AccountAPI.Currency : Swift.Equatable {}
+extension AccountAPI.Currency : Swift.Hashable {}
+extension AccountAPI.Currency : Swift.RawRepresentable {}
+extension AccountAPI.AccountType : Swift.Equatable {}
+extension AccountAPI.AccountType : Swift.Hashable {}
+extension AccountAPI.AccountType : Swift.RawRepresentable {}
+extension AccountAPI.OperationType : Swift.Equatable {}
+extension AccountAPI.OperationType : Swift.Hashable {}
+extension AccountAPI.OperationType : Swift.RawRepresentable {}

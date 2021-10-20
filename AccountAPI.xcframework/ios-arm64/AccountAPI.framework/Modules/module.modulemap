@@ -1,0 +1,11 @@
+framework module AccountAPI {
+  umbrella header "AccountAPI.h"
+
+  export *
+  module * { export * }
+}
+
+module AccountAPI.Swift {
+    header "AccountAPI-Swift.h"
+    requires objc
+}

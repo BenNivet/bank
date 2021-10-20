@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  bank
+
+  Created by Benjamin Cante on 18/10/2021.
+  
+*/
+"Home.account_button.title" = "Mes comptes";
+
+"AccountList.account_view.title" = "Mes comptes";
+"AccountList.account_view.no_account" = "Aucun compte";
+
+"AccountDetail.amount_label" = "Solde";
+"AccountDetail.type_label" = "Nature du compte:";
+"AccountDetail.label_label" = "Libellé:";
+"AccountDetail.owner_label" = "Détenteur:";
+"AccountDetail.iban_label" = "IBAN:";
+"AccountDetail.subscription_date_label" = "Date de souscription:";
+"AccountDetail.legal_informations_label" = "Infos Légales:";
